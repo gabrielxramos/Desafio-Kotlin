@@ -7,5 +7,4 @@ interface Professor {
     var tempo: Int
     val codProfessor: Int
 
-
 }

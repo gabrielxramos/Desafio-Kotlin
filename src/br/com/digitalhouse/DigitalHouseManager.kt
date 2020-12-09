@@ -61,22 +61,28 @@ class DigitalHouseManager() {
         }
     }
 
-    fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
+    fun matricularAluno(codigoAluno: Int, codigoCurso: Int){
+        var aluno1 = Aluno(codAluno = codigoAluno)
+        var curso1 = Curso(codCurso = codigoCurso)
 
-        for (alunos in listaDeAlunos) {
-            if (alunos.codAluno == codigoAluno) {
-                for (cursos in listaDeCurso) {
-                    if (cursos.codCurso == codigoCurso) {
-                        val matricularAluno = Matricula(alunos, cursos, "03/12/2020")
-                        listaDeMatricula.add(matricularAluno)
-                        println("Matricula do aluno: ${alunos.nome} no curso de ${cursos.nome} foi realizada com sucesso")
-                    }else{
-                        if (alunos.codAluno != codigoAluno){
-                            println("Aluno com o mesmos código já foi registrado")
-                        }
-                    }
-                }
+        for (curso in listaDeCurso) {
+            if (curso.codCurso == codigoCurso) {
+                curso1 = curso
             }
+        }
+
+        for (aluno in listaDeAlunos) {
+            if (aluno.codAluno == codigoAluno) {
+                aluno1 = aluno
+            }
+        }
+
+        if (curso1.adicionarUmAluno(aluno1)) {
+            val matricula1 = Matricula(aluno1, curso1, "21/10/2542")
+            listaDeMatricula.add(matricula1)
+            println("Matricula do aluno: ${aluno1.nome} no curso de ${curso1.nome} foi realizada com sucesso!")
+        }else{
+            println("Não há vagas dispovíveis no momento. Sua matrícula não pôde ser efetuada. ")
         }
     }
 
@@ -85,6 +91,7 @@ class DigitalHouseManager() {
             var cursoEncontrado: Curso? = null
             var professorTitularEncontrado: ProfessorTitular? = null
             var professorAdjuntoEncontrado: ProfessorAdj? = null
+
             for (curso in listaDeCurso) {
                 if (codigoCurso == curso.codCurso) {
                     cursoEncontrado = curso
@@ -119,23 +126,26 @@ class DigitalHouseManager() {
     }
 
 
-//        for (professor in listaDeProfessores) {
-//            if (professor.codProfessor == codigoProfessorTitular) {
-//                for (curso in listaDeCurso) {
-//                    if (curso.codCurso == codigoCurso) {
-//                        curso.profeTitular == professor
-//                        println("O professor ${professor.nome} ${professor.sobreNome} foi adicionado ao curso ${curso.nome}")
-//                    }
-//                }
-//                if (professor.codProfessor == codigoProfessorAdjunto) {
-//                    for (curso in listaDeCurso) {
-//                        if (curso.codCurso == codigoCurso) {
-//                            curso.profeAdjunto == professor
-//                            println("O professor adjunto ${professor.nome} ${professor.sobreNome} foi adicionado ao curso ${curso.nome}")
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
+/*
+        for (professor in listaDeProfessores) {
+            if (professor.codProfessor == codigoProfessorTitular) {
+                for (curso in listaDeCurso) {
+                    if (curso.codCurso == codigoCurso) {
+                        curso.profeTitular == professor
+                        println("O professor ${professor.nome} ${professor.sobreNome} foi adicionado ao curso ${curso.nome}")
+                    }
+                }
+                if (professor.codProfessor == codigoProfessorAdjunto) {
+                    for (curso in listaDeCurso) {
+                        if (curso.codCurso == codigoCurso) {
+                            curso.profeAdjunto == professor
+                            println("O professor adjunto ${professor.nome} ${professor.sobreNome} foi adicionado ao curso ${curso.nome}")
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+*/

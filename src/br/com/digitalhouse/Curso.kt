@@ -1,9 +1,6 @@
 package br.com.digitalhouse
 
-data class Curso(
-        val nome: String,
-        val codCurso: Int,
-        val quantidadeMaxAln: Int) {
+data class Curso(val nome: String? = null, val codCurso: Int? = null, val quantidadeMaxAln: Int? = null) {
 
     val listaDeMatriculados = mutableListOf<Aluno>()
     var profeTitular: ProfessorTitular? = null
@@ -17,14 +14,18 @@ data class Curso(
         }
     }
 
-    fun adicionarUmAluno(umAluno: Aluno): Boolean {
-        for (aluno in listaDeMatriculados)
-            listaDeMatriculados.add(umAluno)
-        return true or return false
+    fun adicionarUmAluno(aluno: Aluno): Boolean {
+        if (this.listaDeMatriculados.size < quantidadeMaxAln!!) {
+            this.listaDeMatriculados.add(aluno)
+            return true
+        }
+        return false
     }
-
+    
     fun excluirAluno(umAluno: Aluno){
-        listaDeMatriculados.remove(umAluno)
+        if(listaDeMatriculados.contains(umAluno)){
+            listaDeMatriculados.remove(umAluno)
+        }
     }
 
 }

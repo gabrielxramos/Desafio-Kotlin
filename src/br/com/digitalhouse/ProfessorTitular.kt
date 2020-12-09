@@ -1,7 +1,7 @@
 package br.com.digitalhouse
 
 class ProfessorTitular(
-        val Especialidade: String,
+        val especialidade: String,
         override val nome: String,
         override val sobreNome: String,
         override var tempo: Int,

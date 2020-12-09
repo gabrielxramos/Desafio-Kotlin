@@ -8,7 +8,6 @@ fun main() {
     DH.registrarCurso("Full Stack", 20001, 3)
     DH.registrarCurso("Android", 20002, 2)
 
-
     println("\n::.. PROFESSORES  ..::")
     DH.registrarProfessorTitular("Pedro", "Pereira", 123, "Kotlin")
     DH.registrarProfessorTitular("Bernado", "Pedroso", 987,"HTML")
@@ -21,9 +20,11 @@ fun main() {
     DH.registrarAluno("Emerson", "Araujo", 10003)
     DH.registrarAluno("João", "Bueno", 10004)
     DH.registrarAluno("Ricardo", "Pereira", 10005)
+    DH.registrarAluno("Felipe", "Noronha", 10006)
 
     println("\n::..  ALOCANDO PROFESSOR  ..::")
     DH.alocarProfessores(20001, 123,654)
+    DH.alocarProfessores(20002, 987,456)
 
     println("\n::..  MATRICULANDO ALUNO  ..::")
     DH.matricularAluno(10001, 20001)
@@ -31,8 +32,7 @@ fun main() {
     DH.matricularAluno(10003, 20001)
     DH.matricularAluno(10004, 20002)
     DH.matricularAluno(10005, 20002)
-    DH.matricularAluno(10005, 20002)
-
+    DH.matricularAluno(10006, 20002)
 }
 
 
